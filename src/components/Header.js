@@ -1,33 +1,64 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { ChevronDown } from "lucide-react";
 import { LogOut } from "lucide-react";
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { useSelector } from "react-redux";
+import { useDispatch } from 'react-redux';
+import { addUser, removeUser } from '../utils/userSlice';
+import {onAuthStateChanged } from 'firebase/auth';
+import { APP_LOGO,PROFILE_RED_LOGO,PROFILE_BLUE_LOGO } from "../utils/constants.js";
+
 
 const Header = () => {
  const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const user = useSelector(store => store.user);
 
   const handleSignOut = () =>{
     signOut(auth).then(() => {
-      navigate("/")
     }).catch((error) => {
       // An error happened.
       console.error(error);
     });
-  }
+  };
+
+  
+  useEffect(() =>{
+      console.log("Working");
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const {uid,email,displayName,photoURL} = user;
+              console.log("Working");
+              console.log("User details " + {uid:uid,email:email,displayName:displayName,photoURL:photoURL});
+              console.log("User details " + {user});
+          dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));
+          navigate("/browse");
+              // ...
+        } else {
+              // User is signed out
+          dispatch(removeUser());
+          navigate("/");
+  
+              // ...
+        }
+      });
+      
+      //Unsubscribe when component unmounts
+      return () => unsubscribe();
+    
+  },[]);
 
 
 
   return (
     <div className='absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between'>
       <img className='w-40'
-      src='https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-08-26/consent/87b6a5c0-0104-4e96-a291-092c11350111/0198e689-25fa-7d64-bb49-0f7e75f898d2/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png'
+      src= {APP_LOGO}
       alt='logo'
       />
         {user && (<div
@@ -37,7 +68,7 @@ const Header = () => {
         >
           {/* Profile Image */}
           <img
-            src="https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.webp"
+            src={PROFILE_RED_LOGO}
             alt="Sahil Shirodkar"
             className="w-12 h-12 rounded-sm cursor-pointer"
           />
