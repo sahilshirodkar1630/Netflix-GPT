@@ -5,3 +5,11 @@ export const PROFILE_RED_LOGO =
 'https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.webp'
 
 export const PROFILE_BLUE_LOGO ="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg"
+
+export const API_OPTIONS ={
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzRhNDMxNzllMzFmMGRiYzE0MmQ4NjEyZDMzYThhZiIsIm5iZiI6MTY0Mjc3MTk5OS44MTksInN1YiI6IjYxZWFiNjFmOWNhNzU5MDBmY2EwZTlmYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7gCr-hLabrwnd07L15XrtbwnAONcW3Bk2W4uGVpnoGc'
+  }
+};
