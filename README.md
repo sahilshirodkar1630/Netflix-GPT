@@ -21,6 +21,15 @@
 - Add Hardcoderd values to the constants file
 - Register for TMDN API & create an app & get access token
 - Get Data from TMDB now playing movies list API
+- Custom Hook for Now Playing Movies
+- Create movieSlice
+- Update Redux Store with movies Data
+- Planning for Main Container & Secondary Container
+- Fetch Data for Trailer Video
+- Create Hook for Movie Trailer
+- Update Redux Store with Trailer Video Data
+- Embedded the Youtube video and make it autoplay and mute
+
 # Features
 
 Login/Signup Page

@@ -1,5 +1,4 @@
 import React, { useState ,useEffect} from "react";
-import { ChevronDown } from "lucide-react";
 import { LogOut } from "lucide-react";
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
@@ -56,7 +55,7 @@ const Header = () => {
 
 
   return (
-    <div className='absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between'>
+    <div className='absolute w-screen px-8 py-2 bg-gradient-to-b from-black/80 z-10 flex justify-between'>
       <img className='w-40'
       src= {APP_LOGO}
       alt='logo'
