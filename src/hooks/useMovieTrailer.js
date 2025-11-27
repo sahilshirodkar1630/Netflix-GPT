@@ -33,7 +33,6 @@ import { addTrailerVideo } from "../utils/moviesSlice";
         getMovieVideos();
     },[])
 
-
   }
   
   export default useMovieTrailer;
