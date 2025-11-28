@@ -7,7 +7,9 @@ import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import {onAuthStateChanged } from 'firebase/auth';
-import { APP_LOGO,PROFILE_RED_LOGO,PROFILE_BLUE_LOGO } from "../utils/constants.js";
+import { toggleGptSearchView } from "../utils/gptSlice.js";
+import { APP_LOGO,PROFILE_RED_LOGO,PROFILE_BLUE_LOGO, SUPPORTED_LANGUAGES } from "../utils/constants.js";
+import { changeLanguage } from "../utils/configSlice.js";
 
 
 const Header = () => {
@@ -17,6 +19,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(store => store.user);
+  const gptSearch = useSelector(store => store.gpt.showGptSearch);
 
   const handleSignOut = () =>{
     signOut(auth).then(() => {
@@ -32,9 +35,6 @@ const Header = () => {
       const unsubscribe = onAuthStateChanged(auth, (user) => {
         if (user) {
           const {uid,email,displayName,photoURL} = user;
-              console.log("Working");
-              console.log("User details " + {uid:uid,email:email,displayName:displayName,photoURL:photoURL});
-              console.log("User details " + {user});
           dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));
           navigate("/browse");
               // ...
@@ -52,6 +52,12 @@ const Header = () => {
     
   },[]);
 
+  const handleGptSearchClick = () => {
+  dispatch(toggleGptSearchView());
+  }
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  }
 
 
   return (
@@ -60,7 +66,24 @@ const Header = () => {
       src= {APP_LOGO}
       alt='logo'
       />
-        {user && (<div
+        {user && (
+          <div className="flex"> 
+          { gptSearch && (
+              <select className="p-2 my-5 mx-2 bg-gray-600 text-white rounded-lg"
+              onChange={handleLanguageChange}
+              >
+                {SUPPORTED_LANGUAGES.map((lang) => 
+                  <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>
+                )}
+              </select>
+            )
+          }       
+          <button className="py-0 px-4 my-5 mx-2 bg-red-600 text-white rounded-lg"
+          onClick={handleGptSearchClick}>
+            {gptSearch ? "Home Page" : "GPT Search" }
+          </button>
+
+          <div
           className="relative p-5"
           onMouseEnter={() => setIsProfileOpen(true)}
           onMouseLeave={() => setIsProfileOpen(false)}
@@ -71,6 +94,7 @@ const Header = () => {
             alt="Sahil Shirodkar"
             className="w-12 h-12 rounded-sm cursor-pointer"
           />
+
 
           {/* Dropdown Menu */}
           {isProfileOpen && (
@@ -103,8 +127,9 @@ const Header = () => {
             </div>
           )}
         </div>
+        </div>
         )
-}
+        }
 
 
 

@@ -29,6 +29,19 @@
 - Create Hook for Movie Trailer
 - Update Redux Store with Trailer Video Data
 - Embedded the Youtube video and make it autoplay and mute
+- Tailwind Classes to make Main Container look awesome
+- Build Secondary Component
+- Build Movie List
+- Build Movie Card
+- TMDB Image CDN URL
+- Made the Browse Page amazing with Tailwind CSS
+- usePopularMovies - Create Custom hooks to fetch diff movies list
+- GPT Search Page
+- GPT Search Bar
+- (BIG FEATURE) Multi-language Feature in GPT Search Bar
+- INTEGRATE GPT APIS(get open ai key)
+
+
 
 # Features
 
