@@ -1,6 +1,3 @@
-import { Search } from "lucide-react";
-import Login from "../components/Login";
-
 const lang ={
     en:{
         search:"Search",
