@@ -23,4 +23,4 @@ export const SUPPORTED_LANGUAGES = [{identifier: 'en', name: 'English'},
 
 export const APP_IMG_BG_URL = "https://assets.nflxext.com/ffe/siteui/vlv3/9ba9f0e2-b246-47f4-bd1f-3e84c23a5db8/web/IN-en-20251020-TRIFECTA-perspective_d6da84e9-6145-4b1e-bb51-e402c966a045_large.jpg";
 
-export const GEMINI_API_KEY = "AIzaSyBe8wQgDQaUQeHqoX0Mdv_UkKqOZo2F4uk";
+export const GEMINI_API_KEY = "";
