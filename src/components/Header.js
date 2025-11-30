@@ -61,13 +61,13 @@ const Header = () => {
 
 
   return (
-    <div className='absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between'>
-      <img className='w-40'
+    <div className='absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between '>
+      <img className='w-40 mx-auto md:mx-0'
       src= {APP_LOGO}
       alt='logo'
       />
         {user && (
-          <div className="flex"> 
+          <div className="flex justify-between"> 
           { gptSearch && (
               <select className="p-2 my-5 mx-2 bg-gray-600 text-white rounded-lg"
               onChange={handleLanguageChange}

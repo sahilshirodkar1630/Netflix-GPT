@@ -40,6 +40,13 @@
 - GPT Search Bar
 - (BIG FEATURE) Multi-language Feature in GPT Search Bar
 - INTEGRATE GPT APIS(get open ai key)
+- Get OpenI/GEMINI API Key
+- Fetched gptMovie Suggestions from TMDB
+- Created pt Slice and stored the data 
+- Reused Movie List component to make movie suggestion container
+- Added Memoizaion
+- Added .env file and added it to gitignore
+
 
 
 

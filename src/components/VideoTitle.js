@@ -2,12 +2,12 @@
 const VideoTitle = ({title,overview}) => {
     console.log("VideoTitle props: ", title, overview);
         return (
-        <div className=' w-screen aspect-video pt-[15%] px-20 absolute text-white bg-gradient-to-r from-black/70'>
+        <div className=' w-screen aspect-video pt-[8%] px-6 md:px-20 absolute text-white bg-gradient-to-r from-black/70'>
             <h1 className='text-6xl font-bold '>{title}</h1>
-            <p className='py-6     text-lg w-1/4'>{overview}</p>
-             <div className="flex gap-3">
+            <p className='hidden md:inline-block py-6 text-lg w-1/4'>{overview}</p>
+             <div className="flex gap-3 my-4 md:my-0">
                 {/* Play Button */}
-                <button className="bg-white text-black font-medium p-4 px-12 text-xl rounded-lg flex items-center hover:bg-gray-300 transition">
+                <button className="bg-white text-black font-medium py-1 md:py-4 px-2 md:px-12 text-xl rounded-lg flex items-center hover:bg-gray-300 transition">
                     <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         fill="currentColor" 
@@ -20,7 +20,7 @@ const VideoTitle = ({title,overview}) => {
                     </button>
 
                     {/* More Info Button */}
-                    <button className="bg-gray-500/70 text-white font-medium p-4 px-12 text-xl rounded-lg flex items-center hover:bg-gray-500 transition">
+                    <button className=" hidden md:inline-block bg-gray-500/70 text-white font-medium p-4 px-12 text-xl rounded-lg flex items-center hover:bg-gray-500 transition">
                     <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         fill="currentColor" 
